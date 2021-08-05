@@ -1,18 +1,20 @@
 @echo off
+TITLE PASPAUSTI TIK KARTA CTRL+C JOG UZBAIGTUMETE IRASYMA
 for /f "delims=" %%x in (settings.ini) do %%x
 cls
 :yt
 echo ------------------------------------
 echo ------------------------------------
 echo -
-echo -
-echo - 	YOUTUBE TO VIDEO (720P)
-echo -	20210805_1359
+echo -	KOPIJAVIMO METODAS
+echo - 	SAVES CONTENT FROM STREAM TO .MP4
+echo -	HLSREC_20210805_1341
 echo -
 echo ------------------------------------
 echo ------------------------------------
+set /p name="IRASO-PAVADINIMAS: "
 set /p id="URL-ADRESAS: "
-%app1% -f best --add-metadata --embed-thumbnail --output %USERPROFILE%\Videos\%%(title)s.%%(ext)s %id%
+%ffmpeg% -i %id% -vcodec copy -acodec copy "%USERPROFILE%\Videos\%name%.mp4"
 pause
 cls
 goto yt
